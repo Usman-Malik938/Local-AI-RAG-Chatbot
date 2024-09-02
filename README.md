@@ -1,1 +1,32 @@
 # Local-AI-RAG-Chatbot
+To run application first download OLLAMA from "https://ollama.com/"
+create virtual environment and activate
+run command "pip install -r requirement.txt"
+their will be some external dependencies to be installed will discuss on respective steps
+Than run command "ollama pull llama-2-7b-chat" on activated virtual environment terminal to install llama 3.1 on local PC
+run "which ollama" on terminal which return full path to the ollama executable if it's installed
+put ollama path in both scripts "app.py" and "FULL_app.py" in the beginning you will find -->OLLAMA_PATH = '/usr/local/bin/ollama'
+run "pip install -U langchain_community"
+Ti run streamlit application run command "streamlit run FULL_app.py"
+to run endpoint run "uvicorn app:app --reload --port 5000"
+their are 2 routes in app.pu 
+->upload
+->ask
+To test routes on postman
+
+Postman Configuration for upload route
+Ensure that the Postman request is correctly configured:
+Method: POST
+URL: http://localhost:5000/upload/
+Body: form-data
+Key: uploaded_files
+Type: File
+Value: (Select your file here)
+
+Postman Configuration for ask route
+Method: POST
+URL: http://localhost:5000/ask/
+Body:
+Type: x-www-form-urlencoded
+Key: question
+Value: What is the origin of Lahore?
